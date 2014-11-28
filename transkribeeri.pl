@@ -26,6 +26,7 @@ sub transkribeeri {
 
 sub transcribe_en {
   my $w = shift;
+  $w =~ s/zz/ZZ/gi;
   return transcribe_xx($w);
 }
 
@@ -75,11 +76,15 @@ sub transcribe_cn {
 sub transcribe_xx {
   my $w = shift;
 
-  $w =~ tr/æ/ä/;
-  
+  $w =~ tr/æø/äö/;
+  $w =~ s/å/oo/gi;
+
+  $w =~ s/ć/tš/gi;
   $w =~ s/sch/š/gi;
   $w =~ s/sh/š/gi;
   $w =~ s/^kh/h/i;
+
+  $w =~ s/zz/ts/i;
 
   return $w;
 }
